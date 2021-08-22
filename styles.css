@@ -5,13 +5,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
-    font-family:  sans-serif;
+    font-family:sans-serif;
     background: #ecf0f1;
-    background-color: tomato;
+    background-color: #7D415B;
 }
 .nav{
-    display: flex;background-color:rgba(43, 205, 226, 0.842);
+    display: flex;
+    background-color:rgba(43, 205, 226, 0.842);
     color: rgba(0, 255, 21, 0.692);
     justify-content: center;
     position: fixed;
@@ -45,22 +47,27 @@ body {
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
 }
+
 .porche {
     grid-column: 1 / span 1;
     grid-row: 2 / span 1;
 }
-.ferrari{
+
+.ferrari {
     grid-column: 2 / span 1;
     grid-row: 1 / span 2;
 }
-.mercedes{
+
+.mercedes {
     grid-column: 3 / span 1;
     grid-row: 1 / span 3;
 }
-.audi{
+
+.audi {
     grid-column: 1 / span 2;
     grid-row: 3 / span 2;
 }
+
 .lambor{
     grid-column: 3 / span 1;
     grid-row: 4 / span 1;
@@ -72,7 +79,6 @@ body {
     height: 100%;
     overflow: hidden;
 }
-
 .overlay {
     position: absolute;
     top: 0;
@@ -99,9 +105,108 @@ body {
 .link:hover .overlay {
     opacity: 1;
 }
+
+.overlay span {
+    position: relative;
+    line-height: 3rem;
+}
+
+.overlay span:before,
+.overlay span:after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 0;
+    background: #fff;
+    transition: width .3s ease-out .2s;
+}
+
+.gallery__overlay span:before {
+    top: 0;
+    left: 0;
+}
+
+.gallery__overlay span:after {
+    bottom: 0;
+    right: 0;
+}
+
+.gallery__link:hover .gallery__overlay span:before,
+.gallery__link:hover .gallery__overlay span:after {
+    width: 100%;    
+}
 .image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transform: scale(1.05);
+    transition: 
+        transform .5s,
+        filter .5s;
+}
+
+.link:hover .image {
+    transform: scale(1.2);
+    filter: blur(2px);
+}
+
+@media screen and (max-width: 60rem) {
+    .container {
+        padding: 1rem;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .chevrolet {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+    }
+
+    .porche {
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 1;
+    }
+
+    .ferrari {
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 2;
+    }
+
+    .mercedes {
+        grid-column: 1 / span 1;
+        grid-row: 3 / span 2;
+    }
+
+    .audi {
+        grid-column: 2 / span 1;
+        grid-row: 3 / span 1;
+    }
+
+    .lambor {
+        grid-column: 2 / span 1;
+        grid-row: 4 / span 1;
+    }
+
+    .overlay {
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (max-width: 35rem) {
+    .gallery {
+        display: block;
+    }
+
+    .item {
+        margin: .5rem;
+    }
+
+    .link {
+        height: 80vw;
+    }
+
+    .overlay {
+        font-size: 1rem;
+    }
 }
