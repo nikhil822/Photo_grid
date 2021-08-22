@@ -104,7 +104,4 @@ body {
     height: 100%;
     object-fit: cover;
     transform: scale(1.05);
-    transition: 
-        transform .5s,
-        filter .5s;
 }
